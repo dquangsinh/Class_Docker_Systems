@@ -1,0 +1,104 @@
+# ============================================
+# Secrets & env
+# ============================================
+.env
+.env.*
+!.env.example
+!.env.sample
+*.pem
+*.key
+*.crt
+secrets/
+credentials.json
+service-account*.json
+
+# ============================================
+# Node.js
+# ============================================
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+.npm
+.yarn/
+.pnp.*
+
+# Build output
+dist/
+build/
+out/
+.next/
+.nuxt/
+.cache/
+.parcel-cache/
+coverage/
+*.tsbuildinfo
+.claude
+# ============================================
+# Docker
+# ============================================
+# Local override files
+docker-compose.override.yml
+docker-compose.override.yaml
+*.local.yml
+# Volume data dirs (commonly bind-mounted)
+data/
+db-data/
+mysql-data/
+postgres-data/
+mongo-data/
+redis-data/
+
+# ============================================
+# Logs
+# ============================================
+# Ignore log output but keep logs/ folders & their configs (e.g. logrotate.conf)
+**/logs/*.log
+**/logs/*.gz
+**/logs/*.[0-9]
+*.log
+pids/
+*.pid
+*.seed
+
+# ============================================
+# OS files
+# ============================================
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+Desktop.ini
+
+# ============================================
+# Editor / IDE
+# ============================================
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json
+!.vscode/launch.json
+.idea/
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+.history/
+
+# ============================================
+# Claude Code (local-only state)
+# ============================================
+.claude/settings.local.json
+.claude/cache/
+.claude/.session/
+
+# ============================================
+# Misc
+# ============================================
+*.bak
+*.tmp
+*.temp
+.tern-port

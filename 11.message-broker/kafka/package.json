@@ -1,0 +1,13 @@
+{
+  "name": "kafka-docker-demo",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "produce": "node producer.js",
+    "consume": "node consumer.js"
+  },
+  "dependencies": {
+    "kafkajs": "^2.2.4",
+    "dotenv": "^16.4.5"
+  }
+}

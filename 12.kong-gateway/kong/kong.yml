@@ -1,0 +1,53 @@
+_format_version: "3.0"
+_transform: true
+
+# Service = upstream backend
+services:
+  - name: echo-service
+    url: http://echo-api:8888
+    routes:
+      - name: echo-route
+        paths:
+          - /echo
+        strip_path: true
+
+    # Plugin gắn ngay vào service này
+    plugins:
+      # Rate limit: 10 req/phút trên mỗi IP
+      - name: rate-limiting
+        config:
+          minute: 10
+          policy: local
+
+      # Thêm header vào response để debug
+      - name: response-transformer
+        config:
+          add:
+            headers:
+              - "X-Gateway:Kong"
+              - "X-Powered-By:Kong-DBless"
+
+# Plugin global (áp dụng cho mọi route)
+plugins:
+  - name: cors
+    config:
+      origins:
+        - "*"
+      methods:
+        - GET
+        - POST
+        - PUT
+        - DELETE
+        - OPTIONS
+      headers:
+        - Accept
+        - Authorization
+        - Content-Type
+      credentials: true
+      max_age: 3600
+
+# Consumer + key-auth ví dụ (chưa enable mặc định để demo dễ)
+# consumers:
+#   - username: demo-user
+#     keyauth_credentials:
+#       - key: my-secret-key

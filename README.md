@@ -100,13 +100,30 @@ Nếu bạn gặp sự cố:
 
 ------------------------------------------------------------------------
 
+## 📂 Danh sách bài học
+
+| # | Bài | Mô tả |
+|---|---|---|
+| 1 | [hello-docker](./1.hello-docker) | Container đầu tiên |
+| 2 | [react-docker](./2.react-docker) | Đóng gói React app |
+| 3 | [node-docker](./3.node-docker) | Đóng gói Node.js API |
+| 4 | [redis-docker](./4.redis-docker) | Cache & session với Redis |
+| 5 | [dockerhub-push-docker](./5.dockerhub-push-docker) | Đẩy image lên Docker Hub |
+| 6 | [dockerhub-pull-docker](./6.dockerhub-pull-docker) | Pull image từ Docker Hub |
+| 7 | [sql-docker](./7.sql-docker) | MySQL/Postgres với Docker |
+| 8 | [no-sql-docker](./8.no-sql-docker) | MongoDB với Docker |
+| 9 | [nginx](./9.nginx) | Reverse proxy & static serve |
+| 10 | [api-google-docs](./10.api-google-docs) | Tích hợp Google API |
+| 11 | [message-broker](./11.message-broker) | **RabbitMQ + Kafka** — task queue & event streaming |
+| 12 | [kong-gateway](./12.kong-gateway) | **Kong** API Gateway (DB-less) |
+| 13 | [monitoring](./13.monitoring) | **Prometheus + Grafana** — quan sát Docker host |
+
 ## 📈 Cải tiến trong tương lai
 
 - Tích hợp CI/CD
 - Cấu hình triển khai sản xuất
 - Thiết lập proxy ngược
 - Cấu hình SSL
-- Giám sát (Prometheus, Grafana)
 
 
 ⭐ Nếu dự án này hữu ích với bạn, hãy tặng sao nhé!

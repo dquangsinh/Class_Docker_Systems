@@ -1,0 +1,44 @@
+version: '3.8'
+
+# Kong DB-less mode — config bằng file YAML, không cần Postgres.
+services:
+  # Sample upstream API để Kong proxy tới
+  echo-api:
+    image: mendhak/http-https-echo:latest
+    container_name: echo-api
+    environment:
+      - HTTP_PORT=8888
+    networks:
+      - kong-net
+
+  kong:
+    image: kong:3.7
+    container_name: kong-docker
+    restart: always
+    environment:
+      - KONG_DATABASE=off
+      - KONG_DECLARATIVE_CONFIG=/kong/declarative/kong.yml
+      - KONG_PROXY_ACCESS_LOG=/dev/stdout
+      - KONG_ADMIN_ACCESS_LOG=/dev/stdout
+      - KONG_PROXY_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_ERROR_LOG=/dev/stderr
+      - KONG_ADMIN_LISTEN=0.0.0.0:8001
+      - KONG_PROXY_LISTEN=0.0.0.0:8000
+    volumes:
+      - ./kong:/kong/declarative
+    ports:
+      - "${KONG_PROXY_PORT}:8000"   # Public traffic
+      - "${KONG_ADMIN_PORT}:8001"   # Admin API
+    depends_on:
+      - echo-api
+    networks:
+      - kong-net
+    healthcheck:
+      test: ["CMD", "kong", "health"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+networks:
+  kong-net:
+    driver: bridge
